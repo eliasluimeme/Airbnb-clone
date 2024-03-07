@@ -16,7 +16,7 @@ services:
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    environment:
+    environment: 
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=pwd
       - POSTGRES_DB=airbnb
