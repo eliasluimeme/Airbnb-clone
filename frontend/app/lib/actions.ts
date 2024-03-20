@@ -35,3 +35,9 @@ export async function getUserId() {
     const userId = cookies().get('session_userid')?.value
     return userId ? userId : null 
 }
+
+export async function getAccessToken() {
+    const accessToken = cookies().get('session_access_token')?.value
+    console.log("access token: ", accessToken)
+    return accessToken ? accessToken : null
+}

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 import { resetAuthCookies } from '../lib/actions' 
-import MenuLink from "./navbar/menuLink";
+import MenuLink from "./navbar/menuLink"
 
 const logoutButton: React.FC = () => {
     const router = useRouter()
