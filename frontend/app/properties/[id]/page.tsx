@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import ReservationSideBar from "@/app/components/properties/reservationSidebar";
 
 import apiService from "@/app/services/apiService";
@@ -18,7 +19,7 @@ const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
                     alt="Beach house"
                 />
             </div>
-
+            getReservations
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div className="py-6 pr-6 col-span-3">
                     <h1 className="mb-4 text-4xl">{property.title}</h1>
@@ -29,7 +30,10 @@ const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
 
                     <hr />
 
-                    <div className="py-6 flex items-center space-x-4">
+                    <Link 
+                        href={`/landlords/${property.landlord.id}`}
+                        className="py-6 flex items-center space-x-4"
+                    >
                         {property.landlord && property.landlord.avatar_url && (
                             <Image src={property.landlord.avatar_url} width={50} height={50} className="rounded-full" alt="Profile picture" />
                         )}
@@ -39,7 +43,7 @@ const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
                         )}
 
                         <p><strong>{property.landlord ? property.landlord.name : "Unknown"}</strong> is your host</p>
-                    </div>
+                    </Link>
 
                     <hr />
 
