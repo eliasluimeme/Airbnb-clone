@@ -17,6 +17,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
     onChange,
     bookedDates
 }) => {
+    console.log('booked ', bookedDates)
     return (
         <DateRange
             className="w-full border border-gray-400 rounded-xl mb-4"

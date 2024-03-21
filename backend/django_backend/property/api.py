@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from .forms import PropertyForm
 from .models import Property, Reservation
 from useraccount.models import User
-from .serializers import PropertiesListSerializer, PropertiesDetailSerializer
+from .serializers import PropertiesListSerializer, PropertiesDetailSerializer, ReservationListSerializer
 
 @api_view(['GET'])
 @authentication_classes([])
@@ -17,6 +17,17 @@ def properties_list(request):
     return JsonResponse({
         'data': serializer.data
     })
+
+@api_view(['GET'])
+@authentication_classes([])
+@permission_classes([])
+def property_reservations(request, pk):
+    properties = Property.objects.get(pk=pk)
+    reservations = properties.reservations.all()
+
+    serializer = ReservationListSerializer(reservations, many=True)
+
+    return JsonResponse(serializer.data, safe=False)
 
 @api_view(['GET'])
 @authentication_classes([])
