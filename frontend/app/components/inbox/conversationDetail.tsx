@@ -9,12 +9,14 @@ import { MessageType } from "@/app/inbox/[id]/page";
 interface ConversationDetailProps {
     userId: string;
     token: string;
+    messages: MessageType[];
     conversation: ConversationType;
 }
 
 const ConversationDetail: React.FC<ConversationDetailProps> = ({
     token,
     userId,
+    messages,
     conversation
 }) => {
     const messagesDiv = useRef(null)
@@ -42,8 +44,10 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
                 sent_to: otherUser as UserType,
                 created_by: myUser as UserType,
             }
+
             setRealTimeMessages((realTimeMessages) => [...realTimeMessages, message])
         }
+        
         scrollToBottom()
     }, [lastJsonMessage])
 
@@ -77,19 +81,27 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
                 ref={messagesDiv}
                 className="max-h-[400px] overflow-auto flex flex-col space-y-4"
             >
-                
-                {realTimeMessages.map((message, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className={`w-[80%] py-4 px-6 rounded-xl ${message.name === myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
-                        >
-                            <p className="font-bold text-gray-500">{message.name}</p>
+                {messages.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`w-[80%] py-4 px-6 rounded-xl ${message.created_by.name == myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
+                    >
+                        <p className="font-bold text-gray-500">{message.created_by.name}</p>
 
-                            <p>{message.body}</p>
-                        </div>
-                    )
-                })}
+                        <p>{message.body}</p>
+                    </div>
+                ))}
+                
+                {realTimeMessages.map((message, index) => (
+                    <div
+                        key={index}
+                        className={`w-[80%] py-4 px-6 rounded-xl ${message.name == myUser?.name ? 'ml-[20%] bg-blue-200' : 'bg-gray-200'}`}
+                    >
+                        <p className="font-bold text-gray-500">{message.name}</p>
+
+                        <p>{message.body}</p>
+                    </div>
+                ))}
             </div>
 
             <div className="mt-4 py-4 px-6 flex border border-grey-300 space-x-4 rounded-xl">

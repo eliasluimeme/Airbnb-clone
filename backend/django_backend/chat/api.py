@@ -2,8 +2,8 @@ from django.http import JsonResponse
 
 from rest_framework.decorators import api_view
 
-from .models import Conversation
-from .serializers import ConversationListSerializer, ConversationDetailSereializer
+from .models import Conversation, ConversationMessage
+from .serializers import ConversationListSerializer, ConversationDetailSerializer, ConversationMessageSerializer
 
 @api_view(['GET'])
 def conversation_list(request):
@@ -14,8 +14,11 @@ def conversation_list(request):
 @api_view(['GET'])
 def conversation_detail(request, pk):
     conversation = request.user.conversations.get(pk=pk)
-    serializer = ConversationDetailSereializer(conversation, many=False)
+
+    conversationSerializer = ConversationDetailSerializer(conversation, many=False)
+    messagesSerializer = ConversationMessageSerializer(conversation.messages.all(), many=True)
 
     return JsonResponse({
-        'conversation': serializer.data
+        'conversation': conversationSerializer.data,
+        'messages': messagesSerializer.data
     }, safe=False)
