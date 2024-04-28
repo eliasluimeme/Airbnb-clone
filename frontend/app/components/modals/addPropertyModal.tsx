@@ -41,8 +41,6 @@ const AddPropertyModal = () => {
     }
 
     const submitForm = async ( ) => {
-        console.log('Submit')
-
         if (dataCategory && dataTitle && dataDescription && dataPrice && dataCountry && dataImage) {
             const formData = new FormData()
             formData.append('category', dataCategory)
@@ -55,28 +53,13 @@ const AddPropertyModal = () => {
             formData.append('country', dataCountry.label)
             formData.append('country_code', dataCountry.value)
             formData.append('image', dataImage)
-            // const form = {
-            //     title: dataTitle,
-            //     description: dataDescription,
-            //     price_per_night: dataPrice,
-            //     bedrooms: dataBedrooms,
-            //     bathrooms: dataBathrooms,
-            //     guests: dataGuests,
-            //     country: dataCountry.label,
-            //     country_code: dataCountry.value,
-            //     category: dataCategory,
-            //     image: dataImage
-            // }
 
-            console.log("dataaa:" , formData)
             const response = await apiService.post('/api/properties/create/', formData)
 
             if (response.success) {
-                console.log('Success')
-                router.push('/')
+                router.push('/?added=true')
                 AddPropertyModal.close()
             } else {
-                console.log('Failed', response.error);
                 const tmpErrors: string[] = Object.values(response).map((error: any) => {
                     return error
                 })
