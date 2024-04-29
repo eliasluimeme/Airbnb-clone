@@ -19,7 +19,7 @@ const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
                     alt="Beach house"
                 />
             </div>
-            getReservations
+            
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                 <div className="py-6 pr-6 col-span-3">
                     <h1 className="mb-4 text-4xl">{property.title}</h1>
