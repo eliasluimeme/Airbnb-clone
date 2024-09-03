@@ -17,4 +17,4 @@ RUN chmod +x /usr/src/django_backend/script.sh
 
 COPY . .
 
-ENTRYPOINT [ "/usr/src/django_backend/script.sh" ]
+ENTRYPOINT [ "/usr/src/backend/script.sh" ]
