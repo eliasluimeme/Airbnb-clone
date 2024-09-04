@@ -12,8 +12,8 @@ COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
 COPY ./script.sh .
-RUN sed -i 's/\r$//g' /usr/src/django_backend/script.sh
-RUN chmod +x /usr/src/django_backend/script.sh
+RUN sed -i 's/\r$//g' /usr/src/backend/script.sh
+RUN chmod +x /usr/src/backend/script.sh
 
 COPY . .
 
