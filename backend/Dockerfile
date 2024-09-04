@@ -1,6 +1,6 @@
 FROM python:3.12.2-slim-bullseye
 
-WORKDIR /usr/src/django_backend
+WORKDIR /usr/src/backend
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
