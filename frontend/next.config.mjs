@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'airbnb-clone-8nmo.onrender.comm',
+                hostname: 'airbnb-clone-8nmo.onrender.com',
                 port: '',
                 pathname: '/**'
             }
