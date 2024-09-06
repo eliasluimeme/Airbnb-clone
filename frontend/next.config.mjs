@@ -16,16 +16,16 @@ const nextConfig = {
             }
         ]
     },
-    async rewrites() {
-        return [
-            {
-                source: '/api/:path*',
-                destination: process.env.NODE_ENV === 'production'
-                    ? 'https://airbnb-clone-8nmo.onrender.com/api/:path*'
-                    : 'http://localhost:8000/api/:path*',
-            },
-        ];
-    },
+    // async rewrites() {
+    //     return [
+    //         {
+    //             source: '/api/:path*',
+    //             destination: process.env.NODE_ENV === 'production'
+    //                 ? 'https://airbnb-clone-8nmo.onrender.com/api/:path*'
+    //                 : 'http://localhost:8000/api/:path*',
+    //         },
+    //     ];
+    // },
 };
 
 export default nextConfig;
