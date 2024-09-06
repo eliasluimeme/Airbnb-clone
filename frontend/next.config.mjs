@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'your-production-backend.com',
+                hostname: 'airbnb-clone-8nmo.onrender.comm',
                 port: '',
                 pathname: '/**'
             }
@@ -21,7 +21,7 @@ const nextConfig = {
             {
                 source: '/api/:path*',
                 destination: process.env.NODE_ENV === 'production'
-                    ? 'https://your-production-backend.com/api/:path*'
+                    ? 'https://airbnb-clone-8nmo.onrender.com/api/:path*'
                     : 'http://localhost:8000/api/:path*',
             },
         ];
