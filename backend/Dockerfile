@@ -11,10 +11,15 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY ./script.sh .
-RUN sed -i 's/\r$//g' /usr/src/backend/script.sh
-RUN chmod +x /usr/src/backend/script.sh
+# COPY ./script.sh .
+# RUN sed -i 's/\r$//g' /usr/src/backend/script.sh
+# RUN chmod +x /usr/src/backend/script.sh
 
 COPY . .
 
-ENTRYPOINT [ "/usr/src/backend/script.sh" ]
+EXPOSE 8000
+
+# ENTRYPOINT [ "/usr/src/backend/script.sh" ]
+
+# Run the Django app using Gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "djangobnb.wsgi:application"]
