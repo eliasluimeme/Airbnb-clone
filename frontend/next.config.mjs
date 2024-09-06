@@ -2,19 +2,20 @@
 const nextConfig = {
     images: {
         remotePatterns: [
-            {
-                protocol: 'http',
-                hostname: 'localhost',
-                port: '8000',
-                pathname: '/**'
-            },
+            // {
+            //     protocol: 'http',
+            //     hostname: 'localhost',
+            //     port: '8000',
+            //     pathname: '/**'
+            // },
             {
                 protocol: 'https',
                 hostname: 'airbnb-clone-8nmo.onrender.com',
                 port: '',
                 pathname: '/media/**'
             }
-        ]
+        ],
+        domains: ['airbnb-clone-8nmo.onrender.com'],
     },
     async rewrites() {
         return [

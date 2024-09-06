@@ -5,6 +5,8 @@ from dj_rest_auth.jwt_auth import get_refresh_view
 from dj_rest_auth.registration.views import RegisterView
 from dj_rest_auth.views import LoginView, LogoutView, UserDetailsView
 from rest_framework_simplejwt.views import TokenVerifyView
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import api
 
@@ -15,4 +17,4 @@ urlpatterns = [
     path('token/refresh/', get_refresh_view().as_view(), name='token_refresh'),
     path('<uuid:pk>/', api.landlord_detail, name='api_landlord_detail'),
     path('myreservations/', api.reservations_list, name='api_reservations_list'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
