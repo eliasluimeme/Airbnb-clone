@@ -15,7 +15,7 @@ const nextConfig = {
                 pathname: '/media/**'
             }
         ],
-        domains: ['airbnb-clone-8nmo.onrender.com'],
+        domains: ['airbnb-clone-8nmo.onrender.com', 'res.cloudinary.com'],
     },
     async rewrites() {
         return [
