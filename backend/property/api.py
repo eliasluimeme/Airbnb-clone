@@ -7,6 +7,8 @@ from .forms import PropertyForm
 from .models import Property, Reservation
 from useraccount.models import User
 from .serializers import PropertiesListSerializer, PropertiesDetailSerializer, ReservationListSerializer
+import cloudinary.uploader
+
 
 @api_view(['GET'])
 @authentication_classes([])
@@ -114,6 +116,13 @@ def create_property(request):
     if form.is_valid():
         property = form.save(commit=False)
         property.landlord = request.user
+
+        image = request.FILES.get('image')
+
+        if image:
+            upload_result = cloudinary.uploader.upload(image)
+            property.image = upload_result['url']
+            
         property.save()
 
         return JsonResponse({

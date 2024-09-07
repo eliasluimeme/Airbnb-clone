@@ -11,3 +11,4 @@ daphne==4.0.0
 gunicorn
 django-csp
 dj-database-url
+cloudinary

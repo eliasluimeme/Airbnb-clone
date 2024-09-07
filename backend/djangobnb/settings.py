@@ -3,6 +3,10 @@ from pathlib import Path
 from datetime import timedelta
 import dj_database_url
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,6 +80,14 @@ REST_AUTH = {
     'JWT_AUTH_HTTPONLY': False,
 }
 
+# Cloudinary Configuration
+
+cloudinary.config(
+  cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+  api_key=os.getenv('CLOUDINARY_API_KEY'),
+  api_secret=os.getenv('CLOUDINARY_API_SECRET')
+)
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -103,6 +115,9 @@ INSTALLED_APPS = [
     'useraccount',
     'property',
     'chat',
+
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -192,6 +207,8 @@ USE_TZ = True
 # STATIC_URL = 'static/'
 # MEDIA_URL = 'media/'
 # MEDIA_ROOT = BASE_DIR / 'media'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
