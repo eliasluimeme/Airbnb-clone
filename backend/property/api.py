@@ -121,7 +121,7 @@ def create_property(request):
 
         if image:
             upload_result = cloudinary.uploader.upload(image)
-            property.image = upload_result['url']
+            property.image = upload_result['secure_url']
             print("image url", property.image)
 
         property.save()
