@@ -4,6 +4,7 @@ import ReservationSideBar from "@/app/components/properties/reservationSidebar";
 
 import apiService from "@/app/services/apiService";
 import { getUserId } from "@/app/lib/actions";
+import { Gloock } from "next/font/google";
 
 const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
     const property = await apiService.get(`/api/properties/${params.id}`)
