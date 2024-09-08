@@ -22,4 +22,4 @@ EXPOSE 8000
 # ENTRYPOINT [ "/usr/src/backend/script.sh" ]
 
 # Make migrations and run the Django app using Gunicorn
-CMD ["bash", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 djangobnb.wsgi:application"]
+CMD ["bash", "-c", "python manage.py makemigration && python manage.py migrate && python manage.py collectstatic && gunicorn --bind 0.0.0.0:8000 djangobnb.wsgi:application"]

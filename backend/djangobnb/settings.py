@@ -70,7 +70,13 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
-    'https://airbnb-clone-elis-projects-1a8af7d2.vercel.app'
+    'https://airbnb-clone-elis-projects-1a8af7d2.vercel.app',
+    'https://airbnb-clone-8nmo.onrender.com'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://airbnb-clone-elis-projects-1a8af7d2.vercel.app',
+    'https://airbnb-clone-8nmo.onrender.com',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -207,6 +213,12 @@ USE_TZ = True
 # STATIC_URL = 'static/'
 # MEDIA_URL = 'media/'
 # MEDIA_ROOT = BASE_DIR / 'media'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

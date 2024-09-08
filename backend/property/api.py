@@ -100,6 +100,7 @@ def property_reservations(request, pk):
 @authentication_classes([])
 @permission_classes([])
 def property_detail(request, pk):
+    print("URL ", request, pk)
     try:
         property = Property.objects.get(pk=pk)
         serializer = PropertiesDetailSerializer(property, many=False)
