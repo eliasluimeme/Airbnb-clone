@@ -1,6 +1,8 @@
 'use client'
 
+import { toast } from "react-toastify";
 import apiService from "../services/apiService"
+import useLoginModal from "../hooks/useLoginModal";
 
 interface FavoriteButtonProps {
     id: string;
@@ -13,9 +15,13 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
     favorited,
     markFavorite
 }) =>  {
+    const loginModal = useLoginModal()
     const toggleFavorite = async (e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation()
         const response = await apiService.post(`/api/properties/${id}/toggle_favorite/`, {})
+        console.log(response)
+        if (response.code === "token_not_valid")
+            loginModal.open()
         markFavorite(response.favorited)
     }
 

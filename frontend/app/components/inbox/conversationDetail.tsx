@@ -31,7 +31,6 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
     })
 
     useEffect(() => {
-        console.log("Connection state changed", readyState)
     }, [readyState])
 
     useEffect(() => {

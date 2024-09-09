@@ -7,6 +7,7 @@ import LoginModal from "./components/modals/loginModal";
 import SignupModal from "./components/modals/signupModal";
 import AddPropertyModal from "./components/modals/addPropertyModal";
 import SearchModal from "./components/modals/searchModal";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +41,7 @@ export default function RootLayout({
         <SignupModal />
 
         <AddPropertyModal />
+        {/* <ToastContainer /> */}
         </body>
     </html>
   );

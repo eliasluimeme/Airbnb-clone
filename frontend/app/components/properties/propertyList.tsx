@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import apiService from "@/app/services/apiService";
 import PropertyListItems from "./propertyListItems";
 import useSearchModal from "@/app/hooks/useSearchModal";
+import { getAccessToken } from "@/app/lib/actions";
 
 export type PropertyType = {
     id: string;
@@ -37,13 +38,8 @@ const PropertyList: React.FC<PropertyListProps> = ({
 
     const markFavorite = (id: string, favorited: boolean) => {
         const tmpProperties = properties.map((property: PropertyType) => {
-            if (property.id == id) {
+            if (property.id == id)
                 property.favorited = favorited
-
-                if (favorited)
-                    console.log('added to favorites')
-                else console.log('removed from favorites')
-            }
             
             return property
         })
@@ -76,7 +72,6 @@ const PropertyList: React.FC<PropertyListProps> = ({
             if (checkoutDate)
                 urlQuery += `&checkout_date=` + format(checkoutDate, 'yyyy-MM-dd')
             if (urlQuery.length) {
-                console.log('Query:', urlQuery)
                 urlQuery = '?' + urlQuery.substring(1)
                 url += urlQuery
             }

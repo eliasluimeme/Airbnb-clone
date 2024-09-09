@@ -13,7 +13,6 @@ const PropertyListItems: React.FC<PropertyProps> = ({
     markFavorite
 }) => {
     const router = useRouter();
-    console.log("url", property.image_url, property)
     return (
         <div 
             className="cursor-pointer"
@@ -22,7 +21,6 @@ const PropertyListItems: React.FC<PropertyProps> = ({
             <div className="relative overflow-hidden aspect-square rounded-xl">
                 <Image
                     fill
-                    // src="https://res.cloudinary.com/dwv2hywwe/image/upload/v1725742865/zl8of0hvfdohascs6caj.jpg"
                     src={property.image_url}
                     sizes="(max-width: 768px) 768px, (max-width: 1200px): 768px, 768px" 
                     className="hover:scale-110 object-cover transition h-full w-full" 

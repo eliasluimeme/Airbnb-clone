@@ -3,11 +3,12 @@ import Link from "next/link";
 import ReservationSideBar from "@/app/components/properties/reservationSidebar";
 
 import apiService from "@/app/services/apiService";
-import { getUserId } from "@/app/lib/actions";
+import { getAccessToken, getUserId } from "@/app/lib/actions";
 import { Gloock } from "next/font/google";
 
 const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
     const property = await apiService.get(`/api/properties/${params.id}/`)
+
     const userId = await getUserId()
 
     return (
@@ -42,8 +43,11 @@ const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
                         {!property.landlord || !property.landlord.avatar_url && (
                             <Image src="/profilPic.png" width={50} height={50} className="rounded-full" alt="Profile picture" />
                         )}
-
-                        <p><strong>{property.landlord ? property.landlord.name : "Unknown"}</strong> is your host</p>
+                        
+                        <span>
+                            {property.landlord === userId ? (<p><strong>{property.landlord ? property.landlord.name : "Unknown"}</strong> is your host</p>) : (<p><strong>You are the host</strong></p>)}
+                        </span>
+                        
                     </Link>
 
                     <hr />
