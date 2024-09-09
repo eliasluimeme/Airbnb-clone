@@ -13,9 +13,9 @@ const apiService = {
             'Authorization': `Bearer ${accessToken}`
           }
         })
-    
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
+
+        if (response.status != 200) {
+          console.error(`HTTP error! status: ${response.status}`)
         }
     
         return response.json()

@@ -34,8 +34,6 @@ const LoginModal = () => {
             })
 
             setErrors(tmpErrors)
-
-            // setErrors(response.non_field_errors)
         }
     }
 

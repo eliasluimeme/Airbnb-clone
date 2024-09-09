@@ -44,9 +44,7 @@ const PropertyDetailPage = async ({params}: { params: {id:string}}) => {
                             <Image src="/profilPic.png" width={50} height={50} className="rounded-full" alt="Profile picture" />
                         )}
                         
-                        <span>
-                            {property.landlord === userId ? (<p><strong>{property.landlord ? property.landlord.name : "Unknown"}</strong> is your host</p>) : (<p><strong>You are the host</strong></p>)}
-                        </span>
+                        <p><strong>{property.landlord ? property.landlord.name : "Unknown"}</strong> is your host</p>
                         
                     </Link>
 
